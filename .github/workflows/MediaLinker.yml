@@ -32,7 +32,7 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 \
             -t ${{ secrets.DOCKER_USERNAME }}/medialinker:latest \
-            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:${{ github.sha }} \
+            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:${{ github.run_number }} \
             -f Dockerfile . --push
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -41,7 +41,7 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 \
             -t ${{ secrets.DOCKER_USERNAME }}/medialinker:emby \
-            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:emby-${{ github.sha }} \
+            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:emby-${{ github.run_number }} \
             -f Dockerfile-emby . --push
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -50,7 +50,7 @@ jobs:
         run: |
           docker buildx build --platform linux/amd64,linux/arm64 \
             -t ${{ secrets.DOCKER_USERNAME }}/medialinker:plex \
-            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:plex-${{ github.sha }} \
+            -t ${{ secrets.DOCKER_USERNAME }}/medialinker:plex-${{ github.run_number }} \
             -f Dockerfile-plex . --push
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
